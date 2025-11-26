@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,7 +12,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
+  const { signIn, userRole } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +25,33 @@ const Login = () => {
       toast.error(error.message || "Failed to sign in");
     } else {
       toast.success("Signed in successfully");
+      // Navigate based on role after successful login
+      setTimeout(() => {
+        const roleRoute = getRoleRoute(userRole);
+        navigate(roleRoute);
+      }, 500);
     }
 
     setLoading(false);
+  };
+
+  const getRoleRoute = (role: string | null) => {
+    switch (role) {
+      case "admin":
+        return "/admin";
+      case "moderator":
+        return "/moderator";
+      case "finance":
+        return "/finance";
+      case "onboarding":
+        return "/onboarding";
+      case "support":
+        return "/support";
+      case "delivery":
+        return "/delivery";
+      default:
+        return "/";
+    }
   };
 
   return (

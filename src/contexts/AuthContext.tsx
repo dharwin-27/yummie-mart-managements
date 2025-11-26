@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
-import { useNavigate } from "react-router-dom";
 
 type UserRole = "admin" | "moderator" | "finance" | "onboarding" | "support" | "delivery";
 
@@ -22,7 +21,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [userRole, setUserRole] = useState<UserRole | null>(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   const fetchUserRole = async (userId: string) => {
     const { data, error } = await supabase
@@ -77,9 +75,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     if (!error && data.user) {
-      const role = await fetchUserRole(data.user.id);
-      const roleRoute = getRoleRoute(role);
-      navigate(roleRoute);
+      await fetchUserRole(data.user.id);
     }
 
     return { error };
@@ -101,8 +97,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (!roleError) {
         setUserRole(role);
-        const roleRoute = getRoleRoute(role);
-        navigate(roleRoute);
       }
       
       return { error: roleError };
@@ -114,26 +108,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signOut = async () => {
     await supabase.auth.signOut();
     setUserRole(null);
-    navigate("/auth/login");
-  };
-
-  const getRoleRoute = (role: UserRole | null) => {
-    switch (role) {
-      case "admin":
-        return "/admin";
-      case "moderator":
-        return "/moderator";
-      case "finance":
-        return "/finance";
-      case "onboarding":
-        return "/onboarding";
-      case "support":
-        return "/support";
-      case "delivery":
-        return "/delivery";
-      default:
-        return "/";
-    }
   };
 
   return (

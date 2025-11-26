@@ -59,6 +59,11 @@ const DashboardSelector = () => {
     return null;
   }
 
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/auth/login");
+  };
+
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-7xl mx-auto">
@@ -70,7 +75,7 @@ const DashboardSelector = () => {
               <p className="text-muted-foreground">Select a dashboard to access</p>
             </div>
           </div>
-          <Button variant="outline" onClick={signOut}>
+          <Button variant="outline" onClick={handleSignOut}>
             Sign Out
           </Button>
         </div>
