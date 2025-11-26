@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, LogOut } from "lucide-react";
@@ -22,6 +22,12 @@ const DashboardLayout = ({ children, title, navItems }: DashboardLayoutProps) =>
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
   const { signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/auth/login");
+  };
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -84,7 +90,7 @@ const DashboardLayout = ({ children, title, navItems }: DashboardLayoutProps) =>
         <div className="p-2 border-t border-border">
           <Button
             variant="ghost"
-            onClick={signOut}
+            onClick={handleSignOut}
             className={cn(
               "w-full justify-start",
               !sidebarOpen && "justify-center"

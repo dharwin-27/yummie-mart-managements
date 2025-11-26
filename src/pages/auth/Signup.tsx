@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,6 +17,7 @@ const Signup = () => {
   const [role, setRole] = useState<UserRole>("moderator");
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,9 +29,33 @@ const Signup = () => {
       toast.error(error.message || "Failed to sign up");
     } else {
       toast.success("Account created successfully");
+      // Navigate based on role after successful signup
+      setTimeout(() => {
+        const roleRoute = getRoleRoute(role);
+        navigate(roleRoute);
+      }, 500);
     }
 
     setLoading(false);
+  };
+
+  const getRoleRoute = (userRole: UserRole) => {
+    switch (userRole) {
+      case "admin":
+        return "/admin";
+      case "moderator":
+        return "/moderator";
+      case "finance":
+        return "/finance";
+      case "onboarding":
+        return "/onboarding";
+      case "support":
+        return "/support";
+      case "delivery":
+        return "/delivery";
+      default:
+        return "/";
+    }
   };
 
   return (
