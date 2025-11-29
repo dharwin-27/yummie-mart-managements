@@ -14,52 +14,52 @@ const FinanceOverview = () => {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="border-l-4 border-l-green">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <DollarSign className="h-4 w-4 text-green" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$45,231.89</div>
+            <div className="text-2xl font-bold text-green">$45,231.89</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-l-4 border-l-orange">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending Payments</CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <CreditCard className="h-4 w-4 text-orange" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$12,234</div>
+            <div className="text-2xl font-bold text-orange">$12,234</div>
             <p className="text-xs text-muted-foreground">
               23 transactions pending
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-l-4 border-l-blue">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Growth</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <TrendingUp className="h-4 w-4 text-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+12.5%</div>
+            <div className="text-2xl font-bold text-blue">+12.5%</div>
             <p className="text-xs text-muted-foreground">
               Compared to last month
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-l-4 border-l-green">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Sellers</CardTitle>
-            <PieChart className="h-4 w-4 text-muted-foreground" />
+            <PieChart className="h-4 w-4 text-green" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">234</div>
+            <div className="text-2xl font-bold text-green">234</div>
             <p className="text-xs text-muted-foreground">
               +19 from last month
             </p>
@@ -80,21 +80,21 @@ const FinanceOverview = () => {
                   <p className="text-sm font-medium">Order #12345</p>
                   <p className="text-xs text-muted-foreground">2 hours ago</p>
                 </div>
-                <span className="text-sm font-bold text-green-600">+$234.00</span>
+                <span className="text-sm font-bold text-green">+$234.00</span>
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Order #12344</p>
                   <p className="text-xs text-muted-foreground">5 hours ago</p>
                 </div>
-                <span className="text-sm font-bold text-green-600">+$567.00</span>
+                <span className="text-sm font-bold text-green">+$567.00</span>
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Refund #12343</p>
                   <p className="text-xs text-muted-foreground">1 day ago</p>
                 </div>
-                <span className="text-sm font-bold text-red-600">-$89.00</span>
+                <span className="text-sm font-bold text-destructive">-$89.00</span>
               </div>
             </div>
           </CardContent>
