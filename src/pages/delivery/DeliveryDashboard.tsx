@@ -15,52 +15,52 @@ const DeliveryOverview = () => {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="border-l-4 border-l-blue">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Deliveries</CardTitle>
-            <Truck className="h-4 w-4 text-muted-foreground" />
+            <Truck className="h-4 w-4 text-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">89</div>
+            <div className="text-2xl font-bold text-blue">89</div>
             <p className="text-xs text-muted-foreground">
               Currently in transit
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-l-4 border-l-orange">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending Pickup</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
+            <Package className="h-4 w-4 text-orange" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">34</div>
+            <div className="text-2xl font-bold text-orange">34</div>
             <p className="text-xs text-muted-foreground">
               Awaiting collection
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-l-4 border-l-green">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Completed Today</CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
+            <CheckCircle className="h-4 w-4 text-green" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">256</div>
+            <div className="text-2xl font-bold text-green">256</div>
             <p className="text-xs text-muted-foreground">
               +18% from yesterday
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-l-4 border-l-blue">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Partners</CardTitle>
-            <MapPin className="h-4 w-4 text-muted-foreground" />
+            <MapPin className="h-4 w-4 text-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">42</div>
+            <div className="text-2xl font-bold text-blue">42</div>
             <p className="text-xs text-muted-foreground">
               Online and available
             </p>
@@ -106,7 +106,7 @@ const DeliveryOverview = () => {
                   <p className="text-xs text-muted-foreground">Partner: Express Delivery</p>
                   <p className="text-xs text-muted-foreground">Delivered 2 min ago</p>
                 </div>
-                <Badge className="bg-green-600">Delivered</Badge>
+                <Badge className="bg-green text-white">Delivered</Badge>
               </div>
             </div>
           </CardContent>
@@ -124,28 +124,28 @@ const DeliveryOverview = () => {
                   <p className="text-sm font-medium">Express Delivery</p>
                   <p className="text-xs text-muted-foreground">45 deliveries</p>
                 </div>
-                <span className="text-sm font-bold text-green-600">98.5%</span>
+                <span className="text-sm font-bold text-green">98.5%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Fast Track</p>
                   <p className="text-xs text-muted-foreground">38 deliveries</p>
                 </div>
-                <span className="text-sm font-bold text-green-600">97.2%</span>
+                <span className="text-sm font-bold text-green">97.2%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Quick Ship</p>
                   <p className="text-xs text-muted-foreground">32 deliveries</p>
                 </div>
-                <span className="text-sm font-bold text-green-600">96.8%</span>
+                <span className="text-sm font-bold text-green">96.8%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Speed Logistics</p>
                   <p className="text-xs text-muted-foreground">28 deliveries</p>
                 </div>
-                <span className="text-sm font-bold text-green-600">95.5%</span>
+                <span className="text-sm font-bold text-green">95.5%</span>
               </div>
             </div>
           </CardContent>
