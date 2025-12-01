@@ -14,6 +14,134 @@ export type Database = {
   }
   public: {
     Tables: {
+      commission_fees: {
+        Row: {
+          amount: number
+          created_at: string | null
+          created_by: string
+          description: string | null
+          due_date: string | null
+          fee_type: string
+          id: string
+          invoice_number: string | null
+          paid_date: string | null
+          party_name: string
+          status: Database["public"]["Enums"]["fee_status"] | null
+          updated_at: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          created_by: string
+          description?: string | null
+          due_date?: string | null
+          fee_type: string
+          id?: string
+          invoice_number?: string | null
+          paid_date?: string | null
+          party_name: string
+          status?: Database["public"]["Enums"]["fee_status"] | null
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          created_by?: string
+          description?: string | null
+          due_date?: string | null
+          fee_type?: string
+          id?: string
+          invoice_number?: string | null
+          paid_date?: string | null
+          party_name?: string
+          status?: Database["public"]["Enums"]["fee_status"] | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      coupon_usage: {
+        Row: {
+          coupon_id: string
+          id: string
+          order_value: number
+          used_at: string | null
+          user_mobile: string
+          user_name: string
+        }
+        Insert: {
+          coupon_id: string
+          id?: string
+          order_value: number
+          used_at?: string | null
+          user_mobile: string
+          user_name: string
+        }
+        Update: {
+          coupon_id?: string
+          id?: string
+          order_value?: number
+          used_at?: string | null
+          user_mobile?: string
+          user_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "coupon_usage_coupon_id_fkey"
+            columns: ["coupon_id"]
+            isOneToOne: false
+            referencedRelation: "coupons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      coupons: {
+        Row: {
+          code: string
+          coupon_type: Database["public"]["Enums"]["coupon_type"]
+          created_at: string | null
+          created_by: string
+          discount_type: Database["public"]["Enums"]["discount_type"]
+          discount_value: number
+          expires_at: string | null
+          id: string
+          individual_user_mobile: string | null
+          individual_user_name: string | null
+          is_active: boolean | null
+          max_uses: number | null
+          min_order_value: number | null
+        }
+        Insert: {
+          code: string
+          coupon_type: Database["public"]["Enums"]["coupon_type"]
+          created_at?: string | null
+          created_by: string
+          discount_type: Database["public"]["Enums"]["discount_type"]
+          discount_value: number
+          expires_at?: string | null
+          id?: string
+          individual_user_mobile?: string | null
+          individual_user_name?: string | null
+          is_active?: boolean | null
+          max_uses?: number | null
+          min_order_value?: number | null
+        }
+        Update: {
+          code?: string
+          coupon_type?: Database["public"]["Enums"]["coupon_type"]
+          created_at?: string | null
+          created_by?: string
+          discount_type?: Database["public"]["Enums"]["discount_type"]
+          discount_value?: number
+          expires_at?: string | null
+          id?: string
+          individual_user_mobile?: string | null
+          individual_user_name?: string | null
+          is_active?: boolean | null
+          max_uses?: number | null
+          min_order_value?: number | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -60,6 +188,9 @@ export type Database = {
         | "onboarding"
         | "support"
         | "delivery"
+      coupon_type: "public" | "individual"
+      discount_type: "percentage" | "fixed"
+      fee_status: "pending" | "paid" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -195,6 +326,9 @@ export const Constants = {
         "support",
         "delivery",
       ],
+      coupon_type: ["public", "individual"],
+      discount_type: ["percentage", "fixed"],
+      fee_status: ["pending", "paid", "cancelled"],
     },
   },
 } as const
