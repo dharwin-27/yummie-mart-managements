@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
-import { Users, Package, ShoppingCart, Truck, UserCog, Receipt, FileText, Tag, DollarSign } from "lucide-react";
+import { Users, Package, ShoppingCart, Truck, UserCog, Receipt, FileText } from "lucide-react";
 import SellerManagement from "./SellerManagement";
 import ProductModeration from "./ProductModeration";
 import OrdersPayments from "./OrdersPayments";
@@ -8,8 +8,6 @@ import DeliveryPartners from "./DeliveryPartners";
 import StaffManagement from "./StaffManagement";
 import Payments from "./Payments";
 import AuditLogs from "./AuditLogs";
-import OffersManagement from "./OffersManagement";
-import CommissionFees from "./CommissionFees";
 
 const navItems = [
   { title: "Seller Management", path: "/admin/sellers", icon: <Users className="w-4 h-4" /> },
@@ -19,8 +17,6 @@ const navItems = [
   { title: "Staff Management", path: "/admin/staff", icon: <UserCog className="w-4 h-4" /> },
   { title: "Payments", path: "/admin/payments", icon: <Receipt className="w-4 h-4" /> },
   { title: "Audit Logs", path: "/admin/logs", icon: <FileText className="w-4 h-4" /> },
-  { title: "Offers Management", path: "/admin/offers", icon: <Tag className="w-4 h-4" /> },
-  { title: "Commission & Fees", path: "/admin/commission", icon: <DollarSign className="w-4 h-4" /> },
 ];
 
 const AdminDashboard = () => {
@@ -35,8 +31,6 @@ const AdminDashboard = () => {
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/logs" element={<AuditLogs />} />
-        <Route path="/offers" element={<OffersManagement />} />
-        <Route path="/commission" element={<CommissionFees />} />
       </Routes>
     </DashboardLayout>
   );

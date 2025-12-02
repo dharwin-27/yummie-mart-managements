@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { Shield, Package, DollarSign, UserCheck, Headphones, Truck } from "lucide-react";
+import { Shield, Package, DollarSign, UserCheck, Headphones, Truck, Tag, Receipt } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/logo.ico";
 
@@ -46,6 +46,20 @@ const dashboards = [
     description: "Manage deliveries and earnings",
     icon: Truck,
     path: "/delivery",
+    color: "bg-blue"
+  },
+  {
+    title: "Offers Management",
+    description: "Create and manage coupon codes",
+    icon: Tag,
+    path: "/offers",
+    color: "bg-orange"
+  },
+  {
+    title: "Commission & Fees",
+    description: "Manage commission and other fees",
+    icon: Receipt,
+    path: "/commission",
     color: "bg-blue"
   },
 ];
