@@ -16,6 +16,8 @@ import FinanceDashboard from "./pages/finance/FinanceDashboard";
 import OnboardingDashboard from "./pages/onboarding/OnboardingDashboard";
 import SupportDashboard from "./pages/support/SupportDashboard";
 import DeliveryDashboard from "./pages/delivery/DeliveryDashboard";
+import OffersDashboard from "./pages/offers/OffersDashboard";
+import CommissionDashboard from "./pages/commission/CommissionDashboard";
 
 const queryClient = new QueryClient();
 
@@ -76,6 +78,22 @@ const App = () => (
               element={
                 <ProtectedRoute allowedRoles={["admin", "delivery"]}>
                   <DeliveryDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/offers/*" 
+              element={
+                <ProtectedRoute allowedRoles={["admin", "moderator"]}>
+                  <OffersDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/commission/*" 
+              element={
+                <ProtectedRoute allowedRoles={["admin", "finance"]}>
+                  <CommissionDashboard />
                 </ProtectedRoute>
               } 
             />
